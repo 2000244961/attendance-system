@@ -1,5 +1,5 @@
 
-const { override, addWebpackModuleRule, addBabelPreset } = require('customize-cra');
+const { override, addWebpackModuleRule, addBabelPresets } = require('customize-cra');
 
 const addNodePolyfills = () => (config) => {
   if (!config.resolve) config.resolve = {};
@@ -15,7 +15,6 @@ module.exports = override(
     use: ['source-map-loader'],
     exclude: /node_modules\/(?!face-api.js)/,  // Ignore source map warnings for face-api.js
   }),
-  addBabelPreset('@babel/preset-react'),
-  addBabelPreset('@babel/preset-env'),
+  addBabelPresets('@babel/preset-react', '@babel/preset-env'),
   addNodePolyfills()
 );
