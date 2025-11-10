@@ -10,10 +10,9 @@ const addNodePolyfills = () => (config) => {
 
 module.exports = override(
   addWebpackModuleRule({
-    test: /\.js$/,
+    test: /face-api.js[\\/].*\.js$/,
     enforce: 'pre',
     use: ['source-map-loader'],
-    exclude: /node_modules\/(?!face-api.js)/,  // Ignore source map warnings for face-api.js
   }),
   addBabelPresets('@babel/preset-react', '@babel/preset-env'),
   addNodePolyfills()
