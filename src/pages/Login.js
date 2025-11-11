@@ -6,6 +6,7 @@ import '../styles/Login.css';
 
 function Login() {
 	console.log('[DEBUG] Login component loaded');
+	console.log('REACT_APP_API_URL:', process.env.REACT_APP_API_URL);
 	const navigate = useNavigate();
 	const { setUser } = useUser();
 	const [username, setUsername] = useState('');
@@ -17,7 +18,7 @@ function Login() {
 			const handleSubmit = async (e) => {
 				e.preventDefault();
 				try {
-					const res = await fetch('/api/user/login', {
+					const res = await fetch(`${process.env.REACT_APP_API_URL}/api/user/login`, {
 						method: 'POST',
 						headers: { 'Content-Type': 'application/json' },
 						body: JSON.stringify({ username, password })
